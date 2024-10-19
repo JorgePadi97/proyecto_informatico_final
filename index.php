@@ -36,6 +36,7 @@
 
     <main style="height: 80%;">
       <div class="p-3">
+        <p>Contenido principal</p>
       </div>
     </main>
 
