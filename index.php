@@ -1,3 +1,6 @@
+<?php
+include 'conexion.php';
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -11,28 +14,26 @@
   
   <body class="bg-success text-white p-3" style="width: 90%; height: 100vh; margin: 0 auto;">
   
-    <nav class="navbar navbar-expand-lg bg-dark rounded" >
-      <div class="container-fluid mx-3 ">
-        <a class="navbar-brand text-white" href="#">Inicio</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active text-white" aria-current="page" href="#">Iniciar sesion</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active text-white" aria-current="page" href="#">Registrarse</a>
-            </li>
-          </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">🔍</button>
-          </form>
-        </div>
-      </div>
-    </nav>
+      <nav class="navbar navbar-expand-lg bg-dark rounded" >
+          <div class="container-fluid mx-3 ">
+            <a class="navbar-brand text-white" href="index.php">Inicio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+              <form class="d-flex" role="search" style="align-items: center;">
+                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">🔍</button>
+              </form>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    </ul>
+                    <a href="views/login.php" class="btn btn-success m-2">Login</a>
+                    <a href="views/registrar_usuario.php" class="btn btn-success m-2">Register</a>
+                </div>
+          </div>
+      </nav>
+
 
     <main style="height: 80%;">
       <div class="p-3">
