@@ -4,6 +4,18 @@ include 'conexion.php';
 session_start();
 ?>
 
+// Redirigir según el rol del usuario
+if (isset($_SESSION['rol_id'])) {
+    if ($_SESSION['rol_id'] == 1) { // Verifica si el rol es de administrador
+        include 'views/dashboard.php'; // Carga el Dashboard para el administrador
+    } else {
+        include 'views/welcome.php'; // Carga la vista Welcome para usuarios regulares
+    }
+} else {
+    include 'views/welcome.php'; // Si no hay sesión, muestra la vista Welcome
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
