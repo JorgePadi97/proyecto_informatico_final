@@ -1,5 +1,7 @@
 <?php
 include 'conexion.php';
+
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +16,31 @@ include 'conexion.php';
   
   <body class="bg-success text-white p-3" style="width: 90%; height: 100vh; margin: 0 auto;">
   
-      <nav class="navbar navbar-expand-lg bg-dark rounded" >
+    <?php
+    if ($_SESSION)
+    echo '
+        <nav class="navbar navbar-expand-lg bg-dark rounded" >
+          <div class="container-fluid mx-3 ">
+            <a class="navbar-brand text-white" href="index.php">Inicio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+              <form class="d-flex" role="search" style="align-items: center;">
+                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">🔍</button>
+              </form>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    </ul>
+                    <a href="controllers/logout.php" class="btn btn-danger m-2">Cerarr Sesion</a>
+                </div>
+            </div>
+          </div>
+        </nav>';
+    else
+    echo '
+          <nav class="navbar navbar-expand-lg bg-dark rounded" >
           <div class="container-fluid mx-3 ">
             <a class="navbar-brand text-white" href="index.php">Inicio</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,9 +57,10 @@ include 'conexion.php';
                     <a href="views/login.php" class="btn btn-success m-2">Login</a>
                     <a href="views/registrar_usuario.php" class="btn btn-success m-2">Register</a>
                 </div>
+            </div>
           </div>
-      </nav>
-
+        </nav>';  
+    ?>
 
     <main style="height: 80%;">
       <div class="p-3">
