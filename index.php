@@ -77,7 +77,7 @@ if (isset($_SESSION['rol_id'])) {
         if (isset($_SESSION['rol_id'])) {
             if ($_SESSION['rol_id'] == 1) {
                 echo "<h2>Bienvenido al Dashboard de Administrador</h2>";
-                // Aquí puedes agregar o incluir más contenido específico para el administrador
+                // Acá se puede agregar o incluir más contenido específico para el administrador
             } else {
                 echo "<h2>Bienvenido a la plataforma, Usuario</h2>";
                 // Contenido específico para el usuario regular
