@@ -1,92 +1,101 @@
 <?php
 include 'conexion.php';
-
 session_start();
 ?>
 
-// Redirigir según el rol del usuario
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Proyecto Final</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body class="bg-success text-white p-3" style="width: 90%; height: 100vh; margin: 0 auto;">
+
+<?php
+// Navegación y redirección basados en rol
 if (isset($_SESSION['rol_id'])) {
-    if ($_SESSION['rol_id'] == 1) { // Verifica si el rol es de administrador
+    if ($_SESSION['rol_id'] == 1) { // Si es administrador
         include 'views/dashboard.php'; // Carga el Dashboard para el administrador
     } else {
         include 'views/welcome.php'; // Carga la vista Welcome para usuarios regulares
     }
 } else {
-    include 'views/welcome.php'; // Si no hay sesión, muestra la vista Welcome
+    // Si no hay sesión, carga directamente el inicio de sesión
+    include 'views/login.php';
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Proyecto Final</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  </head>
-  
-  <body class="bg-success text-white p-3" style="width: 90%; height: 100vh; margin: 0 auto;">
-  
-    <?php
-    if ($_SESSION)
+<!-- Barra de navegación -->
+<?php
+if (isset($_SESSION['rol_id'])) {
     echo '
-        <nav class="navbar navbar-expand-lg bg-dark rounded" >
-          <div class="container-fluid mx-3 ">
+    <nav class="navbar navbar-expand-lg bg-dark rounded">
+        <div class="container-fluid mx-3">
             <a class="navbar-brand text-white" href="index.php">Inicio</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
-              <form class="d-flex" role="search" style="align-items: center;">
+            <form class="d-flex" role="search" style="align-items: center;">
                 <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">🔍</button>
-              </form>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                    </ul>
-                    <a href="controllers/logout.php" class="btn btn-danger m-2">Cerarr Sesion</a>
-                </div>
+            </form>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+                <a href="controllers/logout.php" class="btn btn-danger m-2">Cerrar Sesión</a>
             </div>
-          </div>
-        </nav>';
-    else
-    echo '
-          <nav class="navbar navbar-expand-lg bg-dark rounded" >
-          <div class="container-fluid mx-3 ">
-            <a class="navbar-brand text-white" href="index.php">Inicio</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-              <form class="d-flex" role="search" style="align-items: center;">
-                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">🔍</button>
-              </form>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                    </ul>
-                    <a href="views/login.php" class="btn btn-success m-2">Login</a>
-                    <a href="views/registrar_usuario.php" class="btn btn-success m-2">Register</a>
-                </div>
-            </div>
-          </div>
-        </nav>';  
-    ?>
-
-    <main style="height: 80%;">
-      <div class="p-3">
-        <p>Contenido principal</p>
-      </div>
-    </main>
-
-    <footer class="bg-success text-center text-lg-start">
-        <div class="text-center p-3 bg-dark text-white rounded">
-            © 2024 Nombre de Pagina
         </div>
-    </footer>
+    </nav>';
+} else {
+    echo '
+    <nav class="navbar navbar-expand-lg bg-dark rounded">
+        <div class="container-fluid mx-3">
+            <a class="navbar-brand text-white" href="index.php">Inicio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <form class="d-flex" role="search" style="align-items: center;">
+                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">🔍</button>
+            </form>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+                <a href="views/login.php" class="btn btn-success m-2">Login</a>
+                <a href="views/registrar_usuario.php" class="btn btn-success m-2">Register</a>
+            </div>
+        </div>
+    </nav>';
+}
+?>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  </body>
+<!-- Contenido principal -->
+<main style="height: 80%;">
+    <div class="p-3">
+        <?php
+        if (isset($_SESSION['rol_id'])) {
+            if ($_SESSION['rol_id'] == 1) {
+                echo "<h2>Bienvenido al Dashboard de Administrador</h2>";
+                // Aquí puedes agregar o incluir más contenido específico para el administrador
+            } else {
+                echo "<h2>Bienvenido a la plataforma, Usuario</h2>";
+                // Contenido específico para el usuario regular
+            }
+        } else {
+            echo "<p>Por favor, inicia sesión para ver el contenido.</p>";
+        }
+        ?>
+    </div>
+</main>
+
+<footer class="bg-success text-center text-lg-start">
+    <div class="text-center p-3 bg-dark text-white rounded">
+        © 2024 Nombre de Pagina
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
 
 </html>
