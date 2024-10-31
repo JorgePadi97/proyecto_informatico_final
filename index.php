@@ -86,6 +86,9 @@ if (isset($_SESSION['rol_id'])) {
             echo "<p>Por favor, inicia sesión para ver el contenido.</p>";
         }
         ?>
+        
+        <!-- Incluir noticias -->
+        <?php include 'views/noticias/ver_noticias.php'; ?>
     </div>
 </main>
 
